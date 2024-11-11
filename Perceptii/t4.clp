@@ -25,7 +25,7 @@
 ;Evenimentul 2
 (ag_percept (percept_pobj ev2) (percept_pname isa) (percept_pval eveniment))
 (ag_percept (percept_pobj ev2) (percept_pname direction) (percept_pval ahead))
-(ag_percept (percept_pobj ev1) (percept_pname sem) (percept_pval red))
+(ag_percept (percept_pobj ev2) (percept_pname sem) (percept_pval red))
 
 (ag_percept (percept_pobj b1) (percept_pname isa) (percept_pval pedestrian))
 (ag_percept (percept_pobj b2) (percept_pname isa) (percept_pval pedestrian))

@@ -19,15 +19,27 @@
 )
 
 
-(deffunction AGENT::calcThief (?ev)
+(deffunction AGENT::calcPregnant (?ev)
 	(bind ?quan 0)
 	(do-for-all-facts ((?f ag_percept)) (and (eq ?f:percept_pval ?ev) (eq ?f:percept_pname partof))
-		(do-for-all-facts ((?ff ag_percept)) (and (eq ?ff:percept_pobj ?f:percept_pobj) (and (eq ?ff:percept_pname gen) (eq ?ff:percept_pval thief)))	
+		(do-for-all-facts ((?ff ag_percept)) (and (eq ?ff:percept_pobj ?f:percept_pobj) (and (eq ?ff:percept_pname physical) (eq ?ff:percept_pval pregnant)))	
 			(bind ?quan (+ ?quan 1))
 		)
 	)	
 	(return ?quan)
 )
+
+
+(deffunction AGENT::calcFat (?ev)
+	(bind ?quan 0)
+	(do-for-all-facts ((?f ag_percept)) (and (eq ?f:percept_pval ?ev) (eq ?f:percept_pname partof))
+		(do-for-all-facts ((?ff ag_percept)) (and (eq ?ff:percept_pobj ?f:percept_pobj) (and (eq ?ff:percept_pname physical) (eq ?ff:percept_pval fat)))	
+			(bind ?quan (+ ?quan 1))
+		)
+	)	
+	(return ?quan)
+)
+
 
 
 
@@ -72,8 +84,8 @@
 =>
 	(retract ?id1)
     (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
-	;daca varsta primului grup de oameni e mai mica decat varsta celui de-al doilea grup, directia -> left
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	;daca varsta primului grup de oameni e mai mica decat varsta celui de-al doilea grup, directia -> ahead
 )
 
 (defrule AGENT::age2
@@ -85,38 +97,12 @@
 =>
 	(retract ?id1)
     (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
 	;daca varsta primului grup de oameni e mai mica decat varsta celui de-al doilea grup, directia -> left
 )
 
-;;criteriu 3 - in functie de numarul de infractori
 
-(defrule AGENT::thief1
-	(timp (valoare ?t))
-    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
-	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
-	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcThief ?ev1) (calcThief ?ev2))))(> (calcThief ?ev1) (calcThief ?ev2))))
-        
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
-)
-
-(defrule AGENT::thief2
-	(timp (valoare ?t))
-    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
-	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
-	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcThief ?ev1) (calcThief ?ev2))))(< (calcThief ?ev1) (calcThief ?ev2))))
-        
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
-)
-
-
-;criteriu 4 - in functie de culoarea semaforului
+;criteriu 3 - in functie de culoarea semaforului
 
 (defrule AGENT::red_light
 	(timp (valoare ?t))

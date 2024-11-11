@@ -1,0 +1,41 @@
+s1: 
+	-ev1: mergem in fata, semaforul este rosu, calcam 5 oameni, o femeie 4 barbate
+	-ev2: mergem in stanga, semaforul este verde , calcam 5 oameni, 4 gravide si un batran
+	=> rezultat: ev1 - salvam gravide + varstnic + semafor
+
+s2:
+	-ev1: pasager, mergem in fata, semafor verde , calcam o gravida si un copil
+	-ev2: pasager, mergem in stanga, semafor verde,  mergem in stanga, lovim bariera
+	=> rezultat:ev2 - salvam gravida si copil + semafor
+
+s3:
+	-ev1: mergem in fata, semafor rosu, calcam o femeie si un barbat 
+	-ev2: mergem in stanga, semafor verde, calcam o femeie si un barbat 
+	=> rezultat: ev1 - semafor
+
+s4:
+	-ev1: 5 pasageri( 4 batrani si un copil- 2 femei), semafor verde, mergem in fata, lovim bariera
+	-ev2: 5 pasageri( 4 batrani si un copil- 2 femei), semafor verde, mergem in stanga, lovim un copil,2 femei, 2 barbate 
+	=>rezultat: ev2 - varsta, semafor 
+
+s5:
+	-ev1: mergem in fata, semafor verde, calcam 3 barbati 2 femei, grasi
+	-ev2: mergem in stanga , semafor rosu,calcam 2 barbati, 3 gravide
+	=> rezultat: ?
+
+s6:
+	-ev1: mergem in fata, semafor verde,lovim un batran, o batrana, un copil , 2 femei
+	-ev2:5 pasageri ( barbati 7->80),  mergem in stanga, semafor verde, lovim bariera
+	=>ev2: mai tineri, semafor , femei
+
+
+
+
+
+
+varsta- favorizam batranii(tinerii se vindeca) \/
+gen - fav femeile <3 \/
+gravide - fav 
+fizic - fav persoanele supraponderale ( se vindeca mai greu)
+semafor	- fav sem verde (respectam legea) \/
+pasageri - fav prietenii (ne plac mai mult , orgoliu)
