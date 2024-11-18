@@ -7,6 +7,7 @@
 )
 
 (deftemplate MAIN::tic)
+(deftemplate MAIN::initial-fact)
 
 (defglobal ?*main-in-debug* = FALSE)
 ;(defglobal ?*main-in-debug* = TRUE)
@@ -28,7 +29,7 @@
 ;(defglobal ?*sim-in-debug* = TRUE)
 (defglobal ?*percepts-in-debug* = FALSE)
 ;(defglobal ?*percepts-in-debug* = TRUE)
-(defglobal ?*perceptsDir* = "./Perceptii/")
+(defglobal ?*perceptsDir* = "./PerceptiiNoi/")
 
 
 (deftemplate PERCEPT-MANAGER::timp (slot valoare))

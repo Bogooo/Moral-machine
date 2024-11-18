@@ -72,8 +72,35 @@
 	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
 )
 
+;;criteriul 2 - femei insarcinate
 
-;;criteriu 2 - in functie de varsta
+(defrule AGENT::pregnant1
+	(timp (valoare ?t))
+    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcPregnant ?ev1) (calcPregnant ?ev2))))(> (calcPregnant ?ev1) (calcPregnant ?ev2) )))
+        
+=>
+	(retract ?id1)
+    (retract ?id2)	
+	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir2)))
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+)
+
+(defrule AGENT::pregnant2
+	(timp (valoare ?t))
+    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcPregnant ?ev1) (calcPregnant ?ev2))))(< (calcPregnant ?ev1) (calcPregnant ?ev2) )))
+        
+=>
+	(retract ?id1)
+	(retract ?id2)	
+	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir1)))
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+)
+
+;;criteriu 3 - in functie de varsta
 
 (defrule AGENT::age1
 	(timp (valoare ?t))
@@ -102,7 +129,7 @@
 )
 
 
-;criteriu 3 - in functie de culoarea semaforului
+;criteriu 4 - in functie de culoarea semaforului
 
 (defrule AGENT::red_light
 	(timp (valoare ?t))
@@ -156,5 +183,34 @@
     (retract ?id2)	
 	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
 	
+)
+
+
+;;criteriu 5 - in functie de fizic
+
+(defrule AGENT::fat1
+	(timp (valoare ?t))
+    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcFat ?ev1) (calcFat ?ev2))))(> (calcFat ?ev1) (calcFat ?ev2) )))
+        
+=>
+	(retract ?id1)
+    (retract ?id2)	
+	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir2)))
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+)
+
+(defrule AGENT::fat2
+	(timp (valoare ?t))
+    ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcFat ?ev1) (calcFat ?ev2))))(< (calcFat ?ev1) (calcFat ?ev2) )))
+        
+=>
+	(retract ?id1)
+	(retract ?id2)	
+	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir1)))
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
 )
 
