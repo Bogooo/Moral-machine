@@ -43,5 +43,5 @@
 =>
   (bind ?time_end (time))
   (bind ?ex_time (- ?time_end ?time_start))
-  ;(if (eq ?*ag-measure-time* TRUE) then (printout t "            <M> AGENT Decision time: " ?ex_time " sec." crlf))
+  (if (eq ?*ag-measure-time* TRUE) then (printout t "            <M> AGENT Decision time: " ?ex_time " sec." crlf))
   (retract ?fsta))

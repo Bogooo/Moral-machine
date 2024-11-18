@@ -48,7 +48,7 @@
     (import PERCEPT-MANAGER deftemplate ag_percept)
 )
 
-;(defglobal ?*ag-measure-time* = FALSE)
+(defglobal ?*ag-measure-time* = FALSE)
 (defglobal ?*ag-measure-time* = TRUE)
 
 (defglobal ?*ag-in-debug* = FALSE)
@@ -57,7 +57,7 @@
 ;(defglobal ?*ag-percepts-in-debug* = TRUE)
 (deftemplate ag_bel
     (slot bel_type) ; fluent|moment 
-    ;(slot bel_timeslice) ; in which time slice bel_type is true: 0=crt, 1,2,...=future
+    (slot bel_timeslice) ; in which time slice bel_type is true: 0=crt, 1,2,...=future
     (slot bel_pobj)
     (slot bel_pname) ; which property we're talking about: overtaking-maneuver|no-overtaking-zone|speed_limit
     (slot bel_pval) ; bel_pname value: (prohibited|allowed) or (yes|no) or (50|90|100|130)

@@ -30,7 +30,6 @@ s6:
 
 
 Proprietati:
-	-tip: pasager, pieton
 	-gen: m/f
 	-varsta
 	-fizic :slab/gras/gravida
