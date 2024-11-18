@@ -9,5 +9,5 @@
 (load "initials.clp")
 (load "maneuverValidityASK.clp")
 (reset)
-(run 420)
+(run 700)
 

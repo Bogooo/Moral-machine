@@ -29,13 +29,18 @@ s6:
 	=>ev2: mai tineri, semafor , femei
 
 
-
+Proprietati:
+	-tip: pasager, pieton
+	-gen: m/f
+	-varsta
+	-fizic :slab/gras/gravida
+	-semafor
 
 
 
 varsta- favorizam batranii(tinerii se vindeca) \/
 gen - fav femeile <3 \/
-gravide - fav 
-fizic - fav persoanele supraponderale ( se vindeca mai greu)
+gravide - fav \/
+fizic - fav persoanele supraponderale ( se vindeca mai greu) \/
 semafor	- fav sem verde (respectam legea) \/
 pasageri - fav prietenii (ne plac mai mult , orgoliu)
