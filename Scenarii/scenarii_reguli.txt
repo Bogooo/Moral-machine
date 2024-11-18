@@ -35,7 +35,9 @@ Proprietati:
 	-fizic :slab/gras/gravida
 	-semafor
 
-
+Doc:
+	-cum identifici proprietatile
+	-timp de identificare
 
 varsta- favorizam batranii(tinerii se vindeca) \/
 gen - fav femeile <3 \/

@@ -40,10 +40,6 @@
 	(return ?quan)
 )
 
-
-
-
-
 ;;criteriu 1 - in functie de numarul de femei
 
 (defrule AGENT::gender1
@@ -53,10 +49,8 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcWomen ?ev1) (calcWomen ?ev2))))(> (calcWomen ?ev1) (calcWomen ?ev2) )))
         
 =>
-	(retract ?id1)
-    (retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir2)))
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	(assert (priority (dir ?dir2) (val 20)))
 )
 
 (defrule AGENT::gender2
@@ -66,10 +60,8 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcWomen ?ev1) (calcWomen ?ev2))))(< (calcWomen ?ev1) (calcWomen ?ev2) )))
         
 =>
-	(retract ?id1)
-	(retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir1)))
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+	(assert (priority (dir ?dir1) (val 20)))
 )
 
 ;;criteriul 2 - femei insarcinate
@@ -81,10 +73,8 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcPregnant ?ev1) (calcPregnant ?ev2))))(> (calcPregnant ?ev1) (calcPregnant ?ev2) )))
         
 =>
-	(retract ?id1)
-    (retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir2)))
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	(assert (priority (dir ?dir2) (val 50)))
 )
 
 (defrule AGENT::pregnant2
@@ -94,10 +84,8 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcPregnant ?ev1) (calcPregnant ?ev2))))(< (calcPregnant ?ev1) (calcPregnant ?ev2) )))
         
 =>
-	(retract ?id1)
-	(retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir1)))
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+	(assert (priority (dir ?dir1) (val 50)))
 )
 
 ;;criteriu 3 - in functie de varsta
@@ -109,9 +97,8 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcAge ?ev1) (calcAge ?ev2))))(< (calcAge ?ev1) (calcAge ?ev2))))
         
 =>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	(assert (priority (dir ?dir2) (val 20)))
 	;daca varsta primului grup de oameni e mai mica decat varsta celui de-al doilea grup, directia -> ahead
 )
 
@@ -121,10 +108,9 @@
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcAge ?ev1) (calcAge ?ev2))))(> (calcAge ?ev1) (calcAge ?ev2))))
         
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+=>	
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	(assert (priority (dir ?dir1) (val 20)))
 	;daca varsta primului grup de oameni e mai mica decat varsta celui de-al doilea grup, directia -> left
 )
 
@@ -142,14 +128,12 @@
         
 =>
 	(if (eq ?s1 red) then
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	(assert (priority (dir ?dir1) (val 20)))
 	else 
 		(if (eq ?s2 red)then
-			(retract ?id1)
-        	(retract ?id2)	
-			(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2))))
+			;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2))))
+			(assert (priority (dir ?dir2) (val 20)))
 		)
 )
 
@@ -162,10 +146,9 @@
 
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (eq ?s1 ?s2)))(eq ?s1 red)))
         
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+=>	
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1)))
+	(assert (priority (dir ?dir1) (val 20)))
 	
 )
 
@@ -178,10 +161,9 @@
 
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (eq ?s1 ?s2)))(eq ?s2 red)))
         
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+=>	
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	(assert (priority (dir ?dir2) (val 20)))
 	
 )
 
@@ -194,11 +176,9 @@
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcFat ?ev1) (calcFat ?ev2))))(> (calcFat ?ev1) (calcFat ?ev2) )))
         
-=>
-	(retract ?id1)
-    (retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir2)))
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+=>	
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2)))
+	(assert (priority (dir ?dir2) (val 20)))
 )
 
 (defrule AGENT::fat2
@@ -208,9 +188,33 @@
 	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcFat ?ev1) (calcFat ?ev2))))(< (calcFat ?ev1) (calcFat ?ev2) )))
         
 =>
+	;(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
+	(assert (priority (dir ?dir1) (val 20)))
+)
+
+;;calculeaza ponderea deciziilor
+(defrule AGENT::decision1
+	(declare (salince -10))
+	(timp (valoare ?t))
+    	?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (and(and (not (eq ?ev1 ?ev2)) (not (= (calcAhead) (calcLeft))))(< (calcAhead) (calcLeft ))))
+=>
 	(retract ?id1)
-	(retract ?id2)	
-	;(assert (ag_bel (bel_pobj maneuver) (bel_pname go) (bel_pval ?dir1)))
+	(retract ?id2)
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir2))))
+)
+
+(defrule AGENT::decision2
+	(declare (salince -10))
+	(timp (valoare ?t))
+    	?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ?dir1))
+	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval ?dir2))
+	(test (not (eq ?ev1 ?ev2)))
+=>
+	(retract ?id1)
+	(retract ?id2)
 	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ?dir1))))
 )
+
 

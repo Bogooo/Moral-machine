@@ -63,3 +63,8 @@
     (slot bel_pval) ; bel_pname value: (prohibited|allowed) or (yes|no) or (50|90|100|130)
 )
 
+(deftemplate priority
+    (slot dir); ahead/left 
+    (slot val); 
+)
+
