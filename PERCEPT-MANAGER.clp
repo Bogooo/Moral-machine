@@ -32,6 +32,6 @@
     (assert (timp (valoare ?nt)))
     (retract ?tc) ; pentru a nu intra in bucla infinita
     (load-facts (sym-cat ?*perceptsDir* "t" ?nt ".clp"))
-;    (printout t "   DRIVER-AGENT: facts: " crlf)
-;    (facts AGENT)
+    ;(printout t "   DRIVER-AGENT: facts: " crlf)
+    ;(facts AGENT)
 )

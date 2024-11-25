@@ -68,3 +68,10 @@
     (slot val); 
 )
 
+(defglobal ?*gender_priority* = 10)
+(defglobal ?*pregnant_priority* = 50)
+(defglobal ?*age_priority* = 40)
+(defglobal ?*red_priority* = 20)
+(defglobal ?*fat_priority* = 30)
+
+
