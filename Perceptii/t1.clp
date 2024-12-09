@@ -27,7 +27,7 @@
 (ag_percept (percept_pobj p2) (percept_pname age) (percept_pval 35))
 (ag_percept (percept_pobj p3) (percept_pname age) (percept_pval 42))
 (ag_percept (percept_pobj p4) (percept_pname age) (percept_pval 40))
-(ag_percept (percept_pobj p5) (percept_pname age) (percept_pval 44))
+(ag_percept (percept_pobj p5) (percept_pname age) (percept_pval 24))
 
 
 

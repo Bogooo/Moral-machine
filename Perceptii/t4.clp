@@ -53,7 +53,7 @@
 (ag_percept (percept_pobj b2) (percept_pname gen) (percept_pval f))
 (ag_percept (percept_pobj b3) (percept_pname gen) (percept_pval m))
 (ag_percept (percept_pobj b4) (percept_pname gen) (percept_pval m))
-(ag_percept (percept_pobj b5) (percept_pname gen) (percept_pval m))
+(ag_percept (percept_pobj b5) (percept_pname gen) (percept_pval f))
 
 (ag_percept (percept_pobj b1) (percept_pname age) (percept_pval 23))
 (ag_percept (percept_pobj b2) (percept_pname age) (percept_pval 18))

@@ -29,7 +29,7 @@
 ;(defglobal ?*sim-in-debug* = TRUE)
 (defglobal ?*percepts-in-debug* = FALSE)
 ;(defglobal ?*percepts-in-debug* = TRUE)
-(defglobal ?*perceptsDir* = "./PerceptiiNoi/")
+(defglobal ?*perceptsDir* = "./Perceptii/")
 
 
 (deftemplate PERCEPT-MANAGER::timp (slot valoare))
@@ -73,5 +73,6 @@
 (defglobal ?*age_priority* = 40)
 (defglobal ?*red_priority* = 20)
 (defglobal ?*fat_priority* = 30)
+(defglobal ?*barrier_priority* = 60)
 
 

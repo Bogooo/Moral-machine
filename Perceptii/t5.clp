@@ -18,7 +18,7 @@
 
 (ag_percept (percept_pobj p1) (percept_pname gen) (percept_pval f))
 (ag_percept (percept_pobj p2) (percept_pname gen) (percept_pval f))
-(ag_percept (percept_pobj p3) (percept_pname gen) (percept_pval 3))
+(ag_percept (percept_pobj p3) (percept_pname gen) (percept_pval f))
 (ag_percept (percept_pobj p4) (percept_pname gen) (percept_pval m))
 (ag_percept (percept_pobj p5) (percept_pname gen) (percept_pval m))
 
@@ -38,7 +38,7 @@
 
 ;Evenimentul 2
 (ag_percept (percept_pobj ev2) (percept_pname isa) (percept_pval eveniment))
-(ag_percept (percept_pobj ev2) (percept_pname direction) (percept_pval ahead))
+(ag_percept (percept_pobj ev2) (percept_pname direction) (percept_pval left))
 (ag_percept (percept_pobj ev2) (percept_pname sem) (percept_pval red))
 
 
