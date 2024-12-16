@@ -1,0 +1,17 @@
+Detectare proprietati
+	-identificare bariera
+	-identificare semafor
+	-identificare gen
+	-identificare varsta
+	-identificare fizic
+	-identificare gravide
+
+Timp maxim in milisecunde acceptat:
+	-100 milisecunde pt a fi considerate sigure
+
+Cerinte:
+	-creat lista cu criterii + specificare prioritate
+	-descris fiecare scenariu ok
+	-calculat timpul pe scenarii, inclusiv maximul
+	-estimare timp de raspuns de model impreuna cu timpul maxim de la identificatori
+	-inceput documentatie: introducere, prezentare finala a scenariilor cu poza,
