@@ -74,7 +74,6 @@
 ;;criteriu 1 - in functie de numarul de femei
 
 (defrule AGENT::gender1
-	(declare (salience 12))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -93,7 +92,6 @@
 )
 
 (defrule AGENT::gender2
-	(declare (salience 11))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -114,7 +112,6 @@
 ;;criteriul 2 - femei insarcinate
 
 (defrule AGENT::pregnant1
-	(declare (salience 10))
 	(timp (valoare ?t))
      ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -126,7 +123,6 @@
 )
 
 (defrule AGENT::pregnant2
-	(declare (salience 9))
 	(timp (valoare ?t))
      ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -140,7 +136,6 @@
 ;;criteriu 3 - in functie de varsta
 
 (defrule AGENT::age1
-	(declare (salience 8))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -151,7 +146,6 @@
 )
 
 (defrule AGENT::age2
-	(declare (salience 7))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -168,7 +162,6 @@
 
 
 (defrule AGENT::red_light1
-	(declare (salience 6))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -184,7 +177,6 @@
 )
 
 (defrule AGENT::red_light2
-	(declare (salience 5))
 	(timp (valoare ?t))
 	?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -202,7 +194,6 @@
 ;;criteriu 5 - in functie de fizic
 
 (defrule AGENT::fat1
-	(declare (salience 4))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -214,7 +205,6 @@
 )
 
 (defrule AGENT::fat2
-	(declare (salience 3))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
@@ -228,7 +218,6 @@
 ;;criteriu 6 - bariera
 
 (defrule AGENT::barrier1
-	(declare (salience 2))
 	(timp (valoare ?t))
     	?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval left))
     	(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname barrier) (bel_pval exists))
@@ -238,7 +227,6 @@
 )
 
 (defrule AGENT::barrier2
-	(declare (salience 2))
 	(timp (valoare ?t))
     	?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
     	(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname barrier) (bel_pval exists))
@@ -249,21 +237,21 @@
 
 ;;calculeaza ponderea deciziilor
 (defrule AGENT::auxdec1
-	(declare (salience 1))
+	(declare (salience -1))
 	(timp (valoare ?t))
 	=>
 	(bind ?s1 (calcAhead))
 	(bind ?s2 (calcLeft))
-	(assert (gigel ?s1 ?s2))
+	(assert (scores ?s1 ?s2))
 	)
 	
 	
 (defrule AGENT::decision1
-	(declare (salience 0))
+	(declare (salience -2))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
-	?g<-(gigel ?s1 ?s2)
+	?g<-(scores ?s1 ?s2)
 	(test (> ?s1 ?s2))
 =>
 	
@@ -275,11 +263,11 @@
 )
 
 (defrule AGENT::decision2
-	(declare (salience 0))
+	(declare (salience -2))
 	(timp (valoare ?t))
     ?id1<-(ag_bel (bel_type moment) (bel_pobj ?ev1) (bel_pname direction) (bel_pval ahead))
 	?id2<-(ag_bel (bel_type moment) (bel_pobj ?ev2) (bel_pname direction) (bel_pval left))
-	?g<-(gigel ?s1 ?s2)
+	?g<-(scores ?s1 ?s2)
 	(test (or (< ?s1 ?s2) (= ?s1 ?s2)))
 =>
 	
