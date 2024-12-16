@@ -258,8 +258,8 @@
 	(retract ?id1)
 	(retract ?id2)
 	(retract ?g)
-	(printout t "left decision " (calcAhead) " " (calcLeft) crlf)
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval left)))
+	(printout t "ahead decision " (calcAhead) " " (calcLeft) crlf)
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ahead)))
 )
 
 (defrule AGENT::decision2
@@ -274,8 +274,8 @@
 	(retract ?id1)
 	(retract ?id2)
 	(retract ?g)
-	(printout t "ahead decision " (calcAhead) " " (calcLeft) crlf)
-	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval ahead)))
+	(printout t "left decision " (calcAhead) " " (calcLeft) crlf)
+	(assert (ag_bel (bel_type moment) (bel_pname manuever_go) (bel_pval left)))
 )
 
 
